@@ -72,7 +72,7 @@ class CardServiceTest {
     @Test
     void sortCard_different_value() {
         List<Card> cards = Arrays.asList(new Card(CardValueEnum.EIGHT.getValue(), CardColorEnum.SPADES.getValue()),
-                new Card(CardValueEnum.AS.getValue(), CardColorEnum.HEARTS.getValue()), new Card(CardValueEnum.QUEEN.getValue(), CardColorEnum.CLUBS.getValue()),
+                new Card(CardValueEnum.ACE.getValue(), CardColorEnum.HEARTS.getValue()), new Card(CardValueEnum.QUEEN.getValue(), CardColorEnum.CLUBS.getValue()),
                 new Card(CardValueEnum.TEN.getValue(), CardColorEnum.DIAMONDS.getValue()));
 
         cardService.sortCards(cards, getPokerValueOrder(), getColorOrder());
@@ -86,7 +86,7 @@ class CardServiceTest {
         assertEquals(CardValueEnum.QUEEN.getValue(), cards.get(2).getValue());
         assertEquals(CardColorEnum.CLUBS.getValue(), cards.get(2).getColor());
 
-        assertEquals(CardValueEnum.AS.getValue(), cards.get(3).getValue());
+        assertEquals(CardValueEnum.ACE.getValue(), cards.get(3).getValue());
         assertEquals(CardColorEnum.HEARTS.getValue(), cards.get(3).getColor());
     }
 
@@ -114,9 +114,9 @@ class CardServiceTest {
     @Test
     void sortCard_containing_same_value() {
         List<Card> cards = Arrays.asList(new Card(CardValueEnum.EIGHT.getValue(), CardColorEnum.SPADES.getValue()),
-                new Card(CardValueEnum.AS.getValue(), CardColorEnum.HEARTS.getValue()), new Card(CardValueEnum.TWO.getValue(), CardColorEnum.CLUBS.getValue()),
-                new Card(CardValueEnum.EIGHT.getValue(), CardColorEnum.DIAMONDS.getValue()), new Card(CardValueEnum.AS.getValue(), CardColorEnum.SPADES.getValue()),
-                new Card(CardValueEnum.TWO.getValue(), CardColorEnum.HEARTS.getValue()),new Card(CardValueEnum.AS.getValue(), CardColorEnum.CLUBS.getValue()),
+                new Card(CardValueEnum.ACE.getValue(), CardColorEnum.HEARTS.getValue()), new Card(CardValueEnum.TWO.getValue(), CardColorEnum.CLUBS.getValue()),
+                new Card(CardValueEnum.EIGHT.getValue(), CardColorEnum.DIAMONDS.getValue()), new Card(CardValueEnum.ACE.getValue(), CardColorEnum.SPADES.getValue()),
+                new Card(CardValueEnum.TWO.getValue(), CardColorEnum.HEARTS.getValue()),new Card(CardValueEnum.ACE.getValue(), CardColorEnum.CLUBS.getValue()),
                         new Card(CardValueEnum.KING.getValue(), CardColorEnum.SPADES.getValue()));
 
         cardService.sortCards(cards, getPokerValueOrder(), getColorOrder());
@@ -138,13 +138,13 @@ class CardServiceTest {
         assertEquals(CardValueEnum.KING.getValue(), cards.get(4).getValue());
         assertEquals(CardColorEnum.SPADES.getValue(), cards.get(4).getColor());
 
-        assertEquals(CardValueEnum.AS.getValue(), cards.get(5).getValue());
+        assertEquals(CardValueEnum.ACE.getValue(), cards.get(5).getValue());
         assertEquals(CardColorEnum.HEARTS.getValue(), cards.get(5).getColor());
 
-        assertEquals(CardValueEnum.AS.getValue(), cards.get(6).getValue());
+        assertEquals(CardValueEnum.ACE.getValue(), cards.get(6).getValue());
         assertEquals(CardColorEnum.CLUBS.getValue(), cards.get(6).getColor());
 
-        assertEquals(CardValueEnum.AS.getValue(), cards.get(7).getValue());
+        assertEquals(CardValueEnum.ACE.getValue(), cards.get(7).getValue());
         assertEquals(CardColorEnum.SPADES.getValue(), cards.get(7).getColor());
     }
 
@@ -152,7 +152,7 @@ class CardServiceTest {
         return Arrays.asList(CardValueEnum.TWO.getValue(), CardValueEnum.THREE.getValue(), CardValueEnum.FOUR.getValue(), CardValueEnum.FIVE.getValue(),
                 CardValueEnum.SIX.getValue(), CardValueEnum.SEVEN.getValue(), CardValueEnum.EIGHT.getValue(), CardValueEnum.NINE.getValue(),
                 CardValueEnum.TEN.getValue(), CardValueEnum.JACK.getValue(), CardValueEnum.QUEEN.getValue(), CardValueEnum.KING.getValue(),
-                CardValueEnum.AS.getValue());
+                CardValueEnum.ACE.getValue());
     }
 
     private List<String> getColorOrder(){

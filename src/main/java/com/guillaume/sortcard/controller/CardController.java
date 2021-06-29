@@ -23,7 +23,7 @@ public class CardController {
 
     private static final Logger logger = LoggerFactory.getLogger(CardController.class);
 
-    @PostMapping("/card/new")
+    @GetMapping("/cards/new")
     public ResponseEntity<List<Card>> getNewHand(@RequestParam("size") Integer size){
         try{
             List<Card> cards = cardService.generateNewHand(size);
@@ -38,20 +38,20 @@ public class CardController {
         }
     }
 
-    @PostMapping("/card/sort")
+    @PostMapping("/cards/sort")
     public ResponseEntity<List<Card>> sortCard(@RequestBody CardSortRequest cardSortRequest){
         cardService.sortCards(cardSortRequest.getCards(), cardSortRequest.getValueOrder(), cardSortRequest.getColorOrder());
         logger.info("Your sort hand: ");
         cardService.printCards(cardSortRequest.getCards());
         return ResponseEntity.ok(cardSortRequest.getCards());
     }
-    @GetMapping("/card/values/order")
-    public ResponseEntity<List<CardValueEnum>> getRandomValueOrder() {
+    @GetMapping("/cards/values/order")
+    public ResponseEntity<List<String>> getRandomValueOrder() {
         return ResponseEntity.ok(cardService.getRandomValueOrder());
     }
 
-    @GetMapping("/card/colors/order")
-    public ResponseEntity<List<CardColorEnum>> getRandomColorOrder() {
+    @GetMapping("/cards/colors/order")
+    public ResponseEntity<List<String>> getRandomColorOrder() {
         return ResponseEntity.ok(cardService.getRandomColorOrder());
     }
 

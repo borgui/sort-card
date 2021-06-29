@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class CardService {
@@ -45,21 +46,21 @@ public class CardService {
     }
 
     /**
-     * Get random order of color enum
+     * Get random order of value enum
      * @return
      */
-    public List<CardValueEnum> getRandomValueOrder(){
-        List<CardValueEnum> valueEnums = Arrays.asList(CardValueEnum.values());
+    public List<String> getRandomValueOrder(){
+        List<String> valueEnums = Arrays.stream(CardValueEnum.values()).map(CardValueEnum::getValue).collect(Collectors.toList());;
         Collections.shuffle(valueEnums);
         return valueEnums;
     }
 
     /**
-     * Get d order of color enum
+     * Get random order of color enum
      * @return
      */
-    public List<CardColorEnum> getRandomColorOrder(){
-        List<CardColorEnum> colorEnums = Arrays.asList(CardColorEnum.values());
+    public List<String> getRandomColorOrder(){
+        List<String> colorEnums = Arrays.stream(CardColorEnum.values()).map(CardColorEnum::getValue).collect(Collectors.toList());
         Collections.shuffle(colorEnums);
         return colorEnums;
     }

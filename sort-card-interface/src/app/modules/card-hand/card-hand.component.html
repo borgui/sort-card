@@ -1,0 +1,27 @@
+<p>Value order</p>
+
+<span *ngFor="let value of valueOrder">
+  <app-card [color]="cardColorConstants.CLUBS" [value]="value"></app-card>
+</span>
+
+<p>Color order</p>
+
+<span class="card-space" *ngFor="let color of colorOrder">
+  <app-card [color]="color" [value]="cardValueConstants.ACE"></app-card>
+</span>
+
+<p>Unsort hand</p>
+
+<span class="card-space" *ngFor="let card of unSortHand">
+  <app-card [color]="card.color" [value]="card.value"></app-card>
+</span>
+
+<div style="margin-top:10px">
+  <button *ngIf="isValueLoaded()" (click)="sort()">Sort</button>
+</div>
+
+<p class="card-space" *ngIf="isValueLoaded()">Sort hand</p>
+
+<span class="card-space" *ngFor="let card of sortHand">
+  <app-card [color]="card.color" [value]="card.value"></app-card>
+</span>

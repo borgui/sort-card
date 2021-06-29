@@ -8,11 +8,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 @SpringBootApplication
-@EnableSwagger2
 public class SortCardApplication {
-
-	@Autowired
-	CardController cardController;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SortCardApplication.class, args);

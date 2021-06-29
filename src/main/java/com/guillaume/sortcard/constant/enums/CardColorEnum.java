@@ -6,8 +6,8 @@ import java.util.Arrays;
 
 @Getter
 public enum CardColorEnum {
-    DIAMONDS("D"), SPADES("S"),
-    HEARTS("H"), CLUBS("C");
+    DIAMONDS("Diamonds"), SPADES("Spades"),
+    HEARTS("Hearts"), CLUBS("Clubs");
 
 
     private String value;

@@ -10,10 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Component
 public class CardService {
@@ -48,6 +45,26 @@ public class CardService {
     }
 
     /**
+     * Get random order of color enum
+     * @return
+     */
+    public List<CardValueEnum> getRandomValueOrder(){
+        List<CardValueEnum> valueEnums = Arrays.asList(CardValueEnum.values());
+        Collections.shuffle(valueEnums);
+        return valueEnums;
+    }
+
+    /**
+     * Get d order of color enum
+     * @return
+     */
+    public List<CardColorEnum> getRandomColorOrder(){
+        List<CardColorEnum> colorEnums = Arrays.asList(CardColorEnum.values());
+        Collections.shuffle(colorEnums);
+        return colorEnums;
+    }
+
+    /**
      * Generate a new random card
      * @return card
      */
@@ -75,16 +92,10 @@ public class CardService {
      * Sort cards by value and color
      * @param cards
      */
-    public void sortCards(List<Card> cards){
-         cards.sort(getComparatorCardOrder());
+    public void sortCards(List<Card> cards, List<String> valueOrder, List<String> colorOrder){
+        Comparator<Card> comparator = Comparator.comparingInt(a -> valueOrder.indexOf(a.getValue()));
+        comparator = comparator.thenComparingInt(a -> colorOrder.indexOf(a.getColor()));
+        cards.sort(comparator);
     }
 
-    /**
-     * Get comparator to sort cards by value and color
-     * @return
-     */
-    private Comparator<Card> getComparatorCardOrder(){
-        Comparator<Card> comparator = Comparator.comparingInt(a -> CardValueEnum.getByValue(a.getValue()).getOrder());
-        return comparator.thenComparingInt(a -> CardColorEnum.getByValue(a.getColor()).getOrder());
-    }
 }

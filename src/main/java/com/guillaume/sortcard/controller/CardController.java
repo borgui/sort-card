@@ -1,18 +1,18 @@
 package com.guillaume.sortcard.controller;
 
 
+import com.guillaume.sortcard.constant.enums.CardColorEnum;
+import com.guillaume.sortcard.constant.enums.CardValueEnum;
 import com.guillaume.sortcard.model.Card;
+import com.guillaume.sortcard.model.CardSortRequest;
 import com.guillaume.sortcard.service.CardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
@@ -23,16 +23,11 @@ public class CardController {
 
     private static final Logger logger = LoggerFactory.getLogger(CardController.class);
 
-    @GetMapping("/card/new")
+    @PostMapping("/card/new")
     public ResponseEntity<List<Card>> getNewHand(@RequestParam("size") Integer size){
-
         try{
             List<Card> cards = cardService.generateNewHand(size);
             logger.info("Your hand:");
-            cardService.printCards(cards);
-            cardService.sortCards(cards);
-            logger.info("------------------");
-            logger.info("Your sort hand: ");
             cardService.printCards(cards);
             return ResponseEntity.ok(cards);
         } catch (Exception e){
@@ -41,12 +36,23 @@ public class CardController {
                     null,
                     HttpStatus.BAD_REQUEST);
         }
-
-
     }
 
-    @PostConstruct
-    public void generate10Hand(){
-        this.getNewHand(10);
+    @PostMapping("/card/sort")
+    public ResponseEntity<List<Card>> sortCard(@RequestBody CardSortRequest cardSortRequest){
+        cardService.sortCards(cardSortRequest.getCards(), cardSortRequest.getValueOrder(), cardSortRequest.getColorOrder());
+        logger.info("Your sort hand: ");
+        cardService.printCards(cardSortRequest.getCards());
+        return ResponseEntity.ok(cardSortRequest.getCards());
     }
+    @GetMapping("/card/values/order")
+    public ResponseEntity<List<CardValueEnum>> getRandomValueOrder() {
+        return ResponseEntity.ok(cardService.getRandomValueOrder());
+    }
+
+    @GetMapping("/card/colors/order")
+    public ResponseEntity<List<CardColorEnum>> getRandomColorOrder() {
+        return ResponseEntity.ok(cardService.getRandomColorOrder());
+    }
+
 }

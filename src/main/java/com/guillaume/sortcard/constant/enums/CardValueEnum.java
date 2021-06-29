@@ -9,18 +9,15 @@ import java.util.Locale;
 
 @Getter
 public enum CardValueEnum {
-    TWO("2", 1), THREE("3", 2),
-    FOUR("4", 3), FIVE("5", 4), SIX("6", 5), SEVEN("7", 6),
-    EIGHT("8", 7), NINE("9", 8), TEN("10", 9), JACK("JACK", 10),
-    QUEEN("QUEEN", 11), KING("KING", 12), AS("AS", 13);
+    TWO("2"), THREE("3"),
+    FOUR("4"), FIVE("5"), SIX("6"), SEVEN("7"),
+    EIGHT("8"), NINE("9"), TEN("10"), JACK("JACK"),
+    QUEEN("QUEEN"), KING("KING"), AS("AS");
 
     private String value;
 
-    private Integer order;
-
-    CardValueEnum(String value, Integer order){
+    CardValueEnum(String value){
         this.value = value;
-        this.order = order;
     }
 
     public static CardValueEnum getByValue(String value){

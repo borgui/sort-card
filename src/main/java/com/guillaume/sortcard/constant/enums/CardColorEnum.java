@@ -6,16 +6,14 @@ import java.util.Arrays;
 
 @Getter
 public enum CardColorEnum {
-    DIAMONDS("Diamonds", 1), SPADES("Spades", 2),
-    HEARTS("Hearts", 3), CLUBS("Clubs", 4);
+    DIAMONDS("D"), SPADES("S"),
+    HEARTS("H"), CLUBS("C");
 
 
     private String value;
-    private Integer order;
 
-    CardColorEnum(String value, Integer order){
+    CardColorEnum(String value){
         this.value = value;
-        this.order = order;
     }
 
     public static CardColorEnum getByValue(String value){

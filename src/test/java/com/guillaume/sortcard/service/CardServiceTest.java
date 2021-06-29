@@ -14,8 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -146,6 +145,24 @@ class CardServiceTest {
 
         assertEquals(CardValueEnum.ACE.getValue(), cards.get(7).getValue());
         assertEquals(CardColorEnum.SPADES.getValue(), cards.get(7).getColor());
+    }
+
+    @Test
+    void test_random_value_order() {
+        List<String> valueOrder = this.cardService.getRandomValueOrder();
+        assertEquals(CardValueEnum.values().length, valueOrder.size());
+        for (CardValueEnum value : CardValueEnum.values()) {
+            assertTrue(valueOrder.contains(value.getValue()));
+        }
+    }
+
+    @Test
+    void test_random_color_order() {
+        List<String> colorOrder = this.cardService.getRandomColorOrder();
+        assertEquals(CardColorEnum.values().length, colorOrder.size());
+        for (CardColorEnum value : CardColorEnum.values()) {
+            assertTrue(colorOrder.contains(value.getValue()));
+        }
     }
 
     private List<String> getPokerValueOrder(){

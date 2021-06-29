@@ -1,5 +1,5 @@
 # sort-card
-This app allows you to sort a hand with a random order value and a random order color
+This app allows you to sort a hand of card with a random order value and a random order color
 
 
 # back-end

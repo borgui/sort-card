@@ -8,3 +8,4 @@ Please verify the server is running on "8080" port of localhost.
 
 # front-end (sort-card-interface)
 You can start the front-end app with "ng serve" command from the angular npm package.
+Interface is available on the main route

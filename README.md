@@ -1,6 +1,6 @@
 # sort-card
 This app allows you to sort a hand of card with a random order value and a random order color
-
+Click on the sort button to sort the hand
 
 # back-end
 You can start the back-end app with the spring boot embedded application server. 

@@ -6,5 +6,5 @@ Click on the sort button to sort the hand.
 You can start the back-end app with the spring boot embedded application server. 
 Please verify the server is running on "8080" port of localhost.
 
-# front-end
+# front-end (sort-card-interface)
 You can start the front-end app with "ng serve" command from the angular npm package.

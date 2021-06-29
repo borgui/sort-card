@@ -2,7 +2,7 @@
 This app allows you to sort a hand of card with a random order value and a random order color.
 Click on the sort button to sort the hand.
 
-# back-end
+# back-end (root)
 You can start the back-end app with the spring boot embedded application server. 
 Please verify the server is running on "8080" port of localhost.
 
